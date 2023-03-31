@@ -1,0 +1,58 @@
+<html lang="en">
+ <script>
+    'use strict'
+
+   function add(x){
+          return (x.hindi+x.english+x.math+x.physics+x.chemistry)
+   }
+
+    function call(){
+            let students={
+            101:{name:"Sourabh",fatherName:"Deepak",gender:"male",hindi:76,english:87,math:89,physics:91,chemistry:92},
+            201:{name:"Phebe",fatherName:"Jonah",gender:"female",hindi:70,english:78,math:81,physics:98,chemistry:90},
+            301:{name:"Roshlin",fatherName:"Lucas",gender:"female",hindi:76,english:87,math:89,physics:91,chemistry:92},
+            401:{name:"Logan",fatherName:"Wilmer",gender:"male",hindi:71,english:85,math:85,physics:81,chemistry:82},
+            501:{name:"Kunal",fatherName:"Pawan",gender:"male",hindi:56,english:67,math:59,physics:61,chemistry:42},
+            601:{name:"Rubah",fatherName:"Jeremiah",gender:"female",hindi:79,english:97,math:99,physics:97,chemistry:82}
+                 }
+
+          let rollNoArr=Object.keys(students)
+          let detailsArr=Object.values(students)
+       
+       let filteredArr=detailsArr.filter((item,i)=>{
+
+                  let total=add(item)
+                  item.total=total;
+                  item.percentage=total/5;
+                  item.rollNo=rollNoArr[i];
+
+                 if(male.checked)       return item.gender=="male";
+                 if(female.checked)     return item.gender=="female";
+                 if(ninetyPlus.checked) return item.percentage>90;
+                 if(all.checked)        return true;  
+         })
+
+    let output =`<table cellspacing="0" border="1" width="70%" cellpadding="4">
+       <tr><th rowspan="2">Roll No</th><th rowspan="2" width="14%">Name</th><th rowspan="2">Father Name</th><th rowspan="2">Gender</th><th colspan="5">Subjects</th><th rowspan="2">Total</th><th rowspan="2">Percentage</th></tr>
+       <tr><th>Hindi</th><th>English</th><th>Math</th><th>Physics</th><th>Chemistry</th></tr>`
+
+     filteredArr.map((item,i)=>{
+           
+         output+=`<tr><td>${item.rollNo}</td><td>${item.name}</td><td>${item.fatherName}</td><td>${item.gender}</td><td>${item.hindi}</td><td>${item.english}</td><td>${item.math}</td><td>${item.physics}</td><td>${item.chemistry}</td><td>${item.total}</td><td>${item.percentage}%</td><tr>`     
+       })
+      result.innerHTML=output+ "</table>"
+    }
+ </script>   
+<body >
+   <table width="44%">
+      <tr><th>Male:   <input type="radio" name="search" id="male" onclick="call()"></th>
+         <th>Female: <input type="radio" name="search" id="female" onclick="call()"></th>
+         <th>90% + students: <input type="radio" name="search" id="ninetyPlus" onclick="call()"></th>
+         <th>Display All: <input type="radio" name="search" id="all" onclick="call()"></th>
+
+      </tr>
+   </table><br><br>
+    <center id="result"></center>
+    
+</body>
+</html>
