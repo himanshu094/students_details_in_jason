@@ -26,10 +26,11 @@
                   item.percentage=total/5;
                   item.rollNo=rollNoArr[i];
 
-                 if(male.checked)       return item.gender=="male";
+                 if(male.checked)       return item.gender=="male";                   
                  if(female.checked)     return item.gender=="female";
                  if(ninetyPlus.checked) return item.percentage>90;
-                 if(all.checked)        return true;  
+               //   if(all.checked)        return true;  
+               return true;
          })
 
     let output =`<table cellspacing="0" border="1" width="70%" cellpadding="4">
@@ -43,12 +44,12 @@
       result.innerHTML=output+ "</table>"
     }
  </script>   
-<body >
+<body onload="call()">
    <table width="44%">
       <tr><th>Male:   <input type="radio" name="search" id="male" onclick="call()"></th>
          <th>Female: <input type="radio" name="search" id="female" onclick="call()"></th>
          <th>90% + students: <input type="radio" name="search" id="ninetyPlus" onclick="call()"></th>
-         <th>Display All: <input type="radio" name="search" id="all" onclick="call()"></th>
+         <!-- <th>Display All: <input type="radio" name="search" id="all" onclick="call()"></th> -->
 
       </tr>
    </table><br><br>
